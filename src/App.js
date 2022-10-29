@@ -4,12 +4,16 @@ import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
 import { Navbar, Footer ,Sidebar ,ThemeSettings } from './components'
-import { OkEnglish, Bookings, Calendar, Students, Stacked, Pyramid, Trainers, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor , Line} from './pages'
+import { Activities, Bookings, Calendar, Students, Stacked, Pyramid, Trainers, Kanban, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor , Line} from './pages'
 
 import "./App.css";
 
+import { useStateContext } from './contexts/ContextProvider'
+
+
 const App = () => {
-  const activeMenu = true;
+
+  const { activeMenu } = useStateContext()
 
   return (
     <div>
@@ -43,13 +47,13 @@ const App = () => {
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
               <Navbar />
             </div>
-          </div>
+          
 
           <div>
             <Routes>
               {/* Dashboard */}
-              <Route path="/" element="OkEnglish" />
-              <Route path="/ok_english" element={<OkEnglish />} />
+              <Route path="/" element={<Activities /> } />
+              <Route path="/activities" element={<Activities />} />
 
               {/* Pages */}
               <Route path="/bookings" element={<Bookings />} />
@@ -72,6 +76,7 @@ const App = () => {
               <Route path="/pyramid" element={<Pyramid />} />
               <Route path="/stacked" element={<Stacked />} />
             </Routes>
+          </div>
           </div>
         </div>
       </BrowserRouter>

@@ -1,4 +1,4 @@
-export { default as OkEnglish } from './OkEnglish';
+export { default as Activities } from './Activities';
 export { default as Kanban } from './Kanban';
 export { default as Bookings } from './Bookings';
 export { default as Trainers } from './Trainers';
