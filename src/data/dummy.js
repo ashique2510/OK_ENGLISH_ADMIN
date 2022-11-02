@@ -10,6 +10,11 @@ import { HiOutlineRefresh } from 'react-icons/hi';
 import { TiTick } from 'react-icons/ti';
 import { GiLouvrePyramid } from 'react-icons/gi';
 import { GrLocation } from 'react-icons/gr';
+import { FaRegCalendarCheck } from 'react-icons/fa';
+import { FaUsers } from 'react-icons/fa'
+import { HiSpeakerphone } from 'react-icons/hi'
+
+
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
@@ -484,8 +489,12 @@ export const links = [
     title: 'Pages',
     links: [
       {
+        name: 'registered_users',
+        icon: <FaUsers />,
+      },
+      {
         name: 'bookings',
-        icon: <AiOutlineShoppingCart />,
+        icon: <FaRegCalendarCheck />,
       },
       {
         name: 'trainers',
@@ -494,6 +503,10 @@ export const links = [
       {
         name: 'students',
         icon: <RiContactsLine />,
+      },
+      {
+        name: 'announcement',
+        icon: <HiSpeakerphone />,
       },
     ],
   },

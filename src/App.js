@@ -4,7 +4,7 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Activities, Bookings, Calendar, Trainers, Stacked, Pyramid, Students, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
+import { Activities, Bookings, Calendar, Trainers, Stacked, Pyramid, Students, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, RegisteredUsers ,Announcement } from './pages';
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
@@ -53,7 +53,7 @@ const App = () => {
           <div
             className={
               activeMenu
-                ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  '
+                ? 'dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full '
                 : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
             }
           >
@@ -75,9 +75,11 @@ const App = () => {
               <Route path="/activities" element={<Activities />} />
 
               {/* Pages */}
+              <Route path="/registered_users" element={<RegisteredUsers />} />
               <Route path="/bookings" element={<Bookings />} />
               <Route path="/trainers" element={<Trainers />} />
               <Route path="/students" element={<Students />} />
+              <Route path="/announcement" element={<Announcement />} />
 
               {/* Apps */}
               <Route path="/kanban" element={<Kanban />} />

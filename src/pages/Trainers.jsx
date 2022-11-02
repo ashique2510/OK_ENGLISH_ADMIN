@@ -11,7 +11,7 @@ const Trainers = () => {
     <div className='m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl'>
       <Header category='Page' title='Trainers' />
       <GridComponent 
-      dataSource={employeesData}
+      // dataSource={employeesData}
       allowPaging
       allowSorting
       toolbar={['Search']}

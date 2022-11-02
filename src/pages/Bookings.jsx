@@ -12,7 +12,7 @@ const Bookings = () => {
       <Header category='Page' title='Bookings' />
       <GridComponent 
       id='gridcomp'
-      dataSource={ordersData}
+      // dataSource={ordersData}
       allowPaging
       allowSorting
       >
