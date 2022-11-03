@@ -6,10 +6,13 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
 import { Activities, Bookings, Calendar, Trainers, Stacked, Pyramid, Students, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, RegisteredUsers ,Announcement } from './pages';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+
 
 import { useStateContext } from './contexts/ContextProvider';
 
 const App = () => {
+
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
   useEffect(() => {
@@ -102,6 +105,7 @@ const App = () => {
           </div>
         </div>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 };

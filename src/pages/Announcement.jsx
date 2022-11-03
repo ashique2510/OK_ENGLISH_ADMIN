@@ -3,10 +3,16 @@ import React, { useState } from "react";
 import { Header } from "../components";
 import { addAnnouncement } from "../utils/ApiRoutes";
 import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
+
+
 
 function Announcement() {
-  const [announcement, setAnnouncement] = useState({ announcement: "" });
 
+  const [announcement, setAnnouncement] = useState({ announcement: "" });
+  const navigate = useNavigate()
 
   const handleSubmits = function (e) {
 
@@ -14,12 +20,19 @@ function Announcement() {
     const addAnnounce = async() => {
 
       const response = await axios.post(addAnnouncement,announcement)
-        console.log('response',response);
+
+      if(response){
+        toast.success('Announcement Successfully Submitted !', {
+          position: toast.POSITION.TOP_CENTER
+          });
+          navigate('/activities')
+          }
+
     }
+
     addAnnounce()
     
   };
-
 
 
   const handleChange = function (e) {
