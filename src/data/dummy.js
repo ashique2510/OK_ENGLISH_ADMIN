@@ -479,7 +479,7 @@ export const links = [
     title: 'Dashboard',
     links: [
       {
-        name: 'activities',
+        name: 'home',
         icon: <FiShoppingBag />,
       },
     ],
@@ -498,6 +498,10 @@ export const links = [
       },
       {
         name: 'trainers',
+        icon: <IoMdContacts />,
+      },
+      {
+        name: 'add_trainers',
         icon: <IoMdContacts />,
       },
       {

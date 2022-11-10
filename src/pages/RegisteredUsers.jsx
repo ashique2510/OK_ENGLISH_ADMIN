@@ -3,13 +3,15 @@ import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inje
 
 import { customersData, customersGrid } from '../data/dummy';
 import { Header } from '../components';
-import { getAllUser } from '../utils/ApiRoutes'
-import axios from 'axios'
+import { useStateContext } from '../contexts/ContextProvider';
+
+
 
 
 const RegisteredUsers = () => {
 
-
+ const { allUserData } = useStateContext()
+ console.log(allUserData);
 
   //  const TableHeading = [
   //   { type: 'checkbox', width: '50' },
@@ -53,7 +55,7 @@ const RegisteredUsers = () => {
     <div className="image flex gap-4">
       <img
         className="rounded-full w-10 h-10"
-        src={props.profilePicture}
+        src={props.profilePicUrl}
         alt="employee"
       />
       <div>
@@ -83,28 +85,33 @@ const RegisteredUsers = () => {
       headerText: 'Email',
       width: '150',
       textAlign: 'Center' },
-    { field: 'Status',
-      headerText: 'Status',
-      width: '130',
-      format: 'yMd',
-      textAlign: 'Center',
-      template: customerGridStatus },
-    {
-      field: 'Weeks',
-      headerText: 'Weeks',
-      width: '100',
-      format: 'C2',
-      textAlign: 'Center' },
-    { field: 'Budget',
-      headerText: 'Budget',
-      width: '100',
-      format: 'yMd',
-      textAlign: 'Center' },
-  
-    { field: 'createdAt',
+    // { field: 'Status',
+    //   headerText: 'Status',
+    //   width: '130',
+    //   format: 'yMd',
+    //   textAlign: 'Center',
+    //   template: customerGridStatus },
+    // {
+    //   field: 'Weeks',
+    //   headerText: 'Weeks',
+    //   width: '100',
+    //   format: 'C2',
+    //   textAlign: 'Center' },
+    // { field: 'Budget',
+    //   headerText: 'Budget',
+    //   width: '100',
+    //   format: 'yMd',
+    //   textAlign: 'Center' },
+    { field: 'date',   
       headerText: 'Date',
       width: '150',
       textAlign: 'Center' },
+
+    { field: 'time',   
+    headerText: 'Time',
+    width: '150',
+    textAlign: 'Center' },
+     
   
     { field: '_id',
       headerText: 'Customer ID',
@@ -117,30 +124,16 @@ const RegisteredUsers = () => {
 
 
   const selectionsettings = { persistSelection: true };
-  const toolbarOptions = ['Delete'];
+  const toolbarOptions = ['Delete','Search'];
   const editing = { allowDeleting: true, allowEditing: true };
 
-  const [ allUser ,setAllUser] = useState('')
-
-
-   useEffect(() => {
-
-    const getUserData = async() => {
-
-      const allUsersData = await axios.get(getAllUser)
-      setAllUser(allUsersData.data)
-      console.log('get all users',allUsersData.data);
-    }
-    getUserData()
-      
-   } ,[])
-
+  
 
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Registered Users" />
       <GridComponent
-        dataSource={allUser}
+        dataSource={allUserData}
         enableHover={false}
         allowPaging
         pageSettings={{ pageCount: 5 }}

@@ -4,12 +4,13 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Activities, Bookings, Calendar, Trainers, Stacked, Pyramid, Students, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, RegisteredUsers ,Announcement } from './pages';
+import {  Bookings, Calendar, AddTrainers , Trainers, Stacked, Pyramid, Students, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, RegisteredUsers ,Announcement } from './pages';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 
 
 import { useStateContext } from './contexts/ContextProvider';
+import Home from './pages/Home';
 
 const App = () => {
 
@@ -74,13 +75,14 @@ const App = () => {
 
             <Routes>
               {/* Dashboard */}
-              <Route path="/" element={<Activities /> } />
-              <Route path="/activities" element={<Activities />} />
+              <Route path="/" element={<Home /> } />
+              <Route path="/home" element={<Home />} />
 
               {/* Pages */}
               <Route path="/registered_users" element={<RegisteredUsers />} />
               <Route path="/bookings" element={<Bookings />} />
               <Route path="/trainers" element={<Trainers />} />
+              <Route path="/add_trainers" element={<AddTrainers />} />
               <Route path="/students" element={<Students />} />
               <Route path="/announcement" element={<Announcement />} />
 

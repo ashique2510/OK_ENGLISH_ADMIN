@@ -1,7 +1,8 @@
-export { default as Activities } from './Activities';
+export { default as Home } from './Home';
 export { default as Kanban } from './Kanban';
 export { default as RegisteredUsers } from './RegisteredUsers';
 export { default as Bookings } from './Bookings';
+export { default as AddTrainers } from './AddTrainers';
 export { default as Trainers } from './Trainers';
 export { default as Editor } from './Editor';
 export { default as Students } from './Students';

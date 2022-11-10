@@ -25,7 +25,11 @@ function Announcement() {
         toast.success('Announcement Successfully Submitted !', {
           position: toast.POSITION.TOP_CENTER
           });
-          navigate('/activities')
+
+          setTimeout(() => {
+            navigate("/")
+          }, 6000);
+
           }
 
     }

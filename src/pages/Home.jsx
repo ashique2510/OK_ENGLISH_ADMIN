@@ -15,7 +15,7 @@ const DropDown = ({ currentMode }) => (
   </div>
 );
 
-const Activities = () => {
+const Home = () => {
   const { currentColor, currentMode } = useStateContext();
 
   return (
@@ -330,5 +330,5 @@ const Activities = () => {
   );
 };
 
-export default Activities;
+export default Home;
  
