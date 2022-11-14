@@ -28,6 +28,7 @@ export const ContextProvider = ({ children }) => {
     const [ allBooking, setAllBooking ] = useState('')
     const [ allTutors, setAllTutors ] = useState('')
     const [ dateAndTime ,setDateAndTime ] =useState([ ])
+    const [ show , setShow ] = useState(true)
 
 
     const setMode = (e) => {
@@ -162,7 +163,8 @@ useEffect(() => {
             setCurrentColor,
             initialState,
             allUserData,allBooking,
-            allTutors
+            allTutors,
+            show , setShow,
         }}
         >
          {children}

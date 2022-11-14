@@ -1,23 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids'
 
 
-import { Header } from '../components'
-import { useStateContext } from '../contexts/ContextProvider'
+import { Header } from '../../components'
+import { getAllTutorBooking } from '../../utils/ApiRoutes'
+import axios from 'axios'
+
+const TrainerBooking = () => {
 
 
-const Bookings = () => {
+          const [ tutorDetails, serTutorDetails ] = useState({})
+          const [ bookingData, setBookingData ] = useState([])
+
+ 
 
 
-  const { allBooking } = useStateContext()
-  console.log('from bookingggggggggg',allBooking.bookingArray);
+             useEffect(() => {
+                         
+              const tutorData = JSON.parse(localStorage.getItem('tutorData'))
+              serTutorDetails(tutorData)
+
+             }, [])
+
+
+        useEffect(() => {
+          
+               const getBooking = async() => {
+
+                const response = await axios.get(`${getAllTutorBooking}/${tutorDetails._id}`)
+                      console.log('response from use Effect' , response);
+                      setBookingData(response.data)
+               }
+               getBooking()
+
+
+        } ,[tutorDetails])
 
  
   const customerGridImage = (props) => (
     <div className="image flex gap-4">
       <img
         className="rounded-full w-10 h-10"
-        src={props.profilePicUrl}
+        src={props.ProfilePic}
         alt="employee"
       />
       <div>
@@ -104,7 +128,7 @@ const Bookings = () => {
       <Header category='Page' title='Bookings' />
       <GridComponent 
       id='gridcomp'
-      dataSource={allBooking.bookingArray}
+      dataSource={bookingData.bookingArray}
       allowPaging
       allowSorting
       >
@@ -122,4 +146,4 @@ const Bookings = () => {
   )
 }
 
-export default Bookings
+export default TrainerBooking

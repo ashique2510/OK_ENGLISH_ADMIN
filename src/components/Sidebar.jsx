@@ -1,15 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { SiShopware } from 'react-icons/si'
 import { MdOutlineCancel } from 'react-icons/md'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 
-import { links } from '../data/dummy'
+import { links } from '../data/sideBarData'
 import { useStateContext } from '../contexts/ContextProvider'
+
+import { FiShoppingBag } from 'react-icons/fi';
+import { FaUsers } from 'react-icons/fa'
+import { FaRegCalendarCheck } from 'react-icons/fa';
+
 
 const Sidebar = () => {
 
-  const { activeMenu , setActiveMenu ,screenSize ,currentColor} = useStateContext()
+  const { activeMenu , setActiveMenu ,screenSize ,currentColor } = useStateContext()
+
+  const [ tutorPanel, setTutorPanel ] = useState(false)
+  const [ adminPanel, setAdminPanel ] = useState(false)
+
+  useEffect(() => {
+
+  const checkPanel = localStorage.getItem('panel');
+  if(checkPanel === 'tutorPanel'){
+    
+      setTutorPanel(true)
+  }
+  if(checkPanel === 'adminPanel'){
+    
+    setAdminPanel(true)
+}
+} ,[])
 
   const handleCloseSideBar = () => {
     if(activeMenu && screenSize <= 900) {
@@ -20,6 +41,37 @@ const Sidebar = () => {
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2';
 
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
+
+ 
+ const tutorMenuData = [
+    {
+      title: 'Dashboard',
+      links: [
+        {
+          name: 'home',
+          navLink:'tutor_home',
+          icon: <FiShoppingBag />,
+        },
+      ],
+    },
+  
+    {
+      title: 'Pages',
+      links: [
+        {
+          name: 'New Booking',
+          navLink:'tutor_booking',
+          icon: <FaUsers />,
+        },
+        {
+          name: 'Schedule Time',
+          icon: <FaRegCalendarCheck />,
+        },
+              ]
+    }
+ ]
+
+ 
 
   return (
     <div className='ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10'>
@@ -44,8 +96,11 @@ const Sidebar = () => {
               </TooltipComponent>
         </div>
         <div className='mt-10'>
-            {
-              links.map((item)=>(
+
+            { 
+              adminPanel &&(
+
+             links .map((item)=>(
                 <div key={item.title}>
                   <p className='text-gray-400 m-3 mt-4 uppercase'>
                    {item.title}
@@ -72,9 +127,56 @@ const Sidebar = () => {
 
                       </NavLink>
                   ))}
+
+
+                 
+
+
                 </div>
               ))
-            }
+            )}
+
+          
+            { 
+              tutorPanel &&(
+
+              tutorMenuData.map((item)=>(
+                <div key={item.title}>
+                  <p className='text-gray-400 m-3 mt-4 uppercase'>
+                   {item.title}
+                  </p>
+
+                  {item.links.map((link) =>(
+                      <NavLink 
+                      to={`/${link.navLink}`}
+                      key={link.navLink}
+                      onClick={handleCloseSideBar}
+
+                      style={({ isActive }) => ({
+                        backgroundColor:isActive ? currentColor: ''
+                      })}
+
+                      className={({ isActive }) =>
+                       isActive ? activeLink : normalLink
+                      }
+                      >
+                        {link.icon}
+                        <span className='capitalize'>
+                          {link.name}
+                        </span>
+
+                      </NavLink>
+                  ))}
+
+
+                 
+
+
+                </div>
+              ))
+            )}
+
+
         </div>
       </>
         

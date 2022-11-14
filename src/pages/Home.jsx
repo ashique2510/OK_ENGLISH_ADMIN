@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaRupeeSign } from 'react-icons/fa';
 import { GoPrimitiveDot } from 'react-icons/go';
 import { IoIosMore } from 'react-icons/io';
@@ -16,7 +16,12 @@ const DropDown = ({ currentMode }) => (
 );
 
 const Home = () => {
-  const { currentColor, currentMode } = useStateContext();
+  const { currentColor, currentMode ,setActiveMenu  ,setShow} = useStateContext();
+
+  useEffect(() => {
+    setActiveMenu(true)
+    setShow(true)
+  } ,[])
 
   return (
     <div className="mt-24">
@@ -25,7 +30,7 @@ const Home = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="font-bold text-gray-400">Earnings</p>
-              <p className="text-2xl">₹ 63,448.78</p>
+              <p className="text-2xl">₹ 00.00</p>
             </div>
             <button
               type="button"
